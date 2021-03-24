@@ -12,3 +12,4 @@ A simple Python chat application with Sanic websockets
 - `heroku login` login with heroku
 - `heroku git:remote -a sanic-chat` connect git repo with heroku remote
 - `git push heroku main` deploy new version
+  - If version error when installing packages: update to latest found version in the `requirements.txt`, commit and push again.
