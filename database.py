@@ -19,4 +19,4 @@ async def get_messages():
   return await get('SELECT * FROM messages')
 
 async def post_message(message):
-  return await run('INSERT INTO messages(text, time) VALUES (:text, :time)', message)
+  return await run('INSERT INTO messages(sender, text, time) VALUES (:sender, :text, :time)', message)

@@ -3,11 +3,16 @@
   font-family: Arial, Helvetica, sans-serif;
 }
 
+h1 {
+  text-align: center;
+}
+
 #messages > div {
   border: 1px solid gray;
-  margin-top: 10px;
-  max-width: 300px;
+  max-width: 350px;
   padding: 5px;
+  margin: auto;
+  margin-top: 10px;
 }
 
 #messages > div > p {
@@ -21,4 +26,12 @@
 
 #messages > div > p:last-child {
   font-size: 1.2em;
+}
+
+form {
+  max-width: 350px;
+  display: grid;
+  grid-template-columns: 80px 1fr 40px;
+  column-gap: 5px;
+  margin: auto;
 }

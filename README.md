@@ -8,6 +8,7 @@ A simple Python chat application with Sanic websockets
 - `python main.py` launch server
 
 ## Deploy to Heroku
+- Create `requirements.txt` -> `python -m pip freeze > requirements.txt` 
 - Create a file in root directory named: `Procfile`, with the content: 
   `web: python main.py`
 - In main.py, set port to env variable:

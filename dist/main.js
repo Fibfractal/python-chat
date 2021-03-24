@@ -1,10 +1,14 @@
 const messages = document.querySelector('#messages')
 const form = document.querySelector('form')
-const input = document.querySelector('form > input')
+const username = document.querySelector('#username')
+const newMessage = document.querySelector('#new-message')
 let ws;
 
-initMessages()
-async function initMessages() {
+_init()
+async function _init() {
+  username.value = localStorage['username'] || ''
+  newMessage.focus()
+
   let messages = await fetch('/rest/messages')
   messages = await messages.json()
 
@@ -16,7 +20,8 @@ async function initMessages() {
 connect()
 async function connect() {
   console.log('connecting');
-  ws = new WebSocket(`wss://${location.host}/ws`)
+  const protocol = location.protocol == 'https:' ? 'wss' : 'ws'
+  ws = new WebSocket(`${protocol}://${location.host}/ws`)
   
   ws.onmessage = message => {
     let data = JSON.parse(message.data)
@@ -45,7 +50,7 @@ function appendMessage(message) {
   let messageDiv = document.createElement('div')
   messageDiv.innerHTML = `
     <p>${new Date(message.time).toLocaleString()}</p>
-    <p>${message.text}</p>
+    <p><strong>${message.sender}: </strong>${message.text}</p>
   `
   messages.append(messageDiv)
 }
@@ -54,11 +59,14 @@ form.addEventListener('submit', e => {
   e.preventDefault() // prevent page reload
 
   let message = {
-    text: input.value,
+    sender: username.value,
+    text: newMessage.value,
     time: Date.now()
   }
 
   send(JSON.stringify(message))
 
-  input.value = ''
+  newMessage.value = ''
 })
+
+username.addEventListener('keyup', () => (localStorage['username'] = username.value))
