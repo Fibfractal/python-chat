@@ -3,10 +3,20 @@ const form = document.querySelector('form')
 const input = document.querySelector('form > input')
 let ws;
 
+initMessages()
+async function initMessages() {
+  let messages = await fetch('/rest/messages')
+  messages = await messages.json()
+
+  for(let msg of messages) {
+    appendMessage(msg)
+  }
+}
+
 connect()
 async function connect() {
   console.log('connecting');
-  ws = new WebSocket('ws://localhost:5000/ws')
+  ws = new WebSocket(`wss://${location.host}/ws`)
   
   ws.onmessage = message => {
     let data = JSON.parse(message.data)
@@ -22,13 +32,6 @@ async function connect() {
     setTimeout(() => {
       connect()
     }, 1000);
-  }
-
-  let messages = await fetch('/rest/messages')
-  messages = await messages.json()
-
-  for(let msg of messages) {
-    appendMessage(msg)
   }
 }
 

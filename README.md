@@ -8,6 +8,10 @@ A simple Python chat application with Sanic websockets
 - `python main.py` launch server
 
 ## Deploy to Heroku
+- Create a file in root directory named: `Procfile`, with the content: 
+  `web: python main.py`
+- In main.py, set port to env variable:
+  `app.run(host='0.0.0.0', port=int(os.environ.get("PORT", 5000)))`
 - `npm install -g heroku` install heroku CLI
 - `heroku login` login with heroku
 - `heroku git:remote -a sanic-chat` connect git repo with heroku remote
