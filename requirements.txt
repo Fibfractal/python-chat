@@ -28,7 +28,7 @@ sanic==20.12.2
 Sanic-Cors==0.10.0.post3
 Sanic-Plugins-Framework==0.9.5
 scikit-learn==0.24.1
-scipy==1.6.1
+scipy==1.5.4
 six==1.15.0
 sklearn==0.0
 sniffio==1.2.0
