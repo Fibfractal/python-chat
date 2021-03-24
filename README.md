@@ -1,6 +1,11 @@
 # python-chat
 A simple Python chat application with Sanic websockets
 
+## Live example
+https://sanic-chat.herokuapp.com/
+
+Deployed example uses sqlite as a database, and gets reset at regular intervals
+
 ## Getting started
 - `python -m venv venv` create virtual environment
 - `venv/Scripts/activate.bat` activate venv
