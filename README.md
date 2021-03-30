@@ -20,6 +20,6 @@ Deployed example uses sqlite as a database, and gets reset at regular intervals
   `app.run(host='0.0.0.0', port=int(os.environ.get("PORT", 5000)))`
 - `npm install -g heroku` install heroku CLI
 - `heroku login` login with heroku
-- `heroku git:remote -a sanic-chat` connect git repo with heroku remote
+- `git remote add heroku https://git.heroku.com/<heroku_app_name>.git` connect git repo with heroku remote
 - `git push heroku main` deploy new version
   - If version error when installing packages: update to latest found version in the `requirements.txt`, commit and push again.
