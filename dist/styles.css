@@ -5,6 +5,7 @@
 
 h1 {
   text-align: center;
+  color: red;
 }
 
 #messages > div {
@@ -13,6 +14,7 @@ h1 {
   padding: 5px;
   margin: auto;
   margin-top: 10px;
+  border-radius: 8px;
 }
 
 #messages > div > p {
